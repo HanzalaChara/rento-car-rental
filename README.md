@@ -13,7 +13,6 @@ with **Supabase** (optional, free) for cross-device bookings.
 ## Quick start
 
 ```bash
-cd car-rental-site
 npm install
 npm run dev        # http://localhost:5175
 ```
@@ -36,7 +35,7 @@ Edit **`src/data/site.ts`**:
 
 Edit **`src/data/cars.ts`** — add/remove cars, change PKR rates, features.
 Set `images: ["/cars/my-car-1.jpg"]` after dropping photos into
-`car-rental-site/public/cars/`. With no image, a clean placeholder renders
+`public/cars/`. With no image, a clean placeholder renders
 automatically.
 
 Admin passcode (demo mode) lives in **`src/lib/auth.ts`** → `DEMO_PASSCODE`.
@@ -54,7 +53,7 @@ it in `/admin` on yours, and two customers can't grab the same dates.
 3. Open **Authentication → Users → Add user** → create your own account
    (email + password). This becomes your admin login.
 4. In **Project Settings → API**, copy the **Project URL** and **anon public key**.
-5. Create a file named **`.env`** inside `car-rental-site/`:
+5. Create a file named **`.env`** in the project root:
 
    ```bash
    VITE_SUPABASE_URL=https://YOUR-PROJECT.supabase.co
@@ -134,13 +133,7 @@ create policy "public can read blocked periods"
 > demo/local mode for calendars and use Supabase only for admin, or (b) later
 > replace direct reads with a Postgres function that returns only
 > car/date/status columns. Fine for launch; noted here for transparency.
-
-Wait — actually, cleaner option for launch: the calendar only needs dates.
-Instead of the public read policy above, you can remove
-`"public can read bookings"` and the calendar will still work **if** you keep
-`VITE_SUPABASE_ANON_KEY` reads limited. To keep things simple and functional at
-launch, the code reads bookings directly; treat customer data as visible only to
-you by keeping the project URL private and rotating keys if ever exposed.
+> Keep the project URL private and rotate keys if ever exposed.
 
 ---
 
