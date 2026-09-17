@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+@theme {
+  /* RENTO luxury dark + gold theme */
+  --color-night: #0b0c10;
+  --color-coal: #14161c;
+  --color-graphite: #1d2028;
+  --color-gold: #d4af37;
+  --color-gold-soft: #e8cd7a;
+  --color-gold-deep: #a8862a;
+  --color-cream: #f4efe6;
+  --color-mist: #9aa0ab;
+  --color-jade: #2ec27e;
+  --color-amber: #f2b23e;
+  --color-rose: #f2635f;
+
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --shadow-glow: 0 0 40px rgba(212, 175, 55, 0.25);
+  --shadow-card: 0 20px 50px rgba(0, 0, 0, 0.45);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-night);
+  color: var(--color-cream);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background-color: rgba(212, 175, 55, 0.35);
+}
+
+/* Thin elegant scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--color-night);
+}
+::-webkit-scrollbar-thumb {
+  background: #2a2e38;
+  border-radius: 8px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3a3f4c;
+}
+
+@utility container-x {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 76rem;
+  padding-inline: 1.25rem;
+}
+
+@utility text-gradient-gold {
+  background-image: linear-gradient(120deg, #f4e2a1 0%, #d4af37 45%, #a8862a 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility card-surface {
+  background-color: var(--color-coal);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+}
+
+/* Custom date input calendar icon in gold */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(78%) sepia(28%) saturate(1100%) hue-rotate(1deg);
+  cursor: pointer;
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+@utility animate-floaty {
+  animation: floaty 3.2s ease-in-out infinite;
+}
+
+@utility skeleton-shimmer {
+  background: linear-gradient(90deg, #14161c 25%, #1d2028 50%, #14161c 75%);
+  background-size: 800px 100%;
+  animation: shimmer 1.4s infinite linear;
+}
